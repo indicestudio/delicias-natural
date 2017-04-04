@@ -3,7 +3,8 @@
   "private": true,
   "dependencies": {
     "jquery": "~2.1.1",
-    "tingle": "^0.9.0"
+    "tingle": "^0.9.0",
+    "barba.js": "luruke/barba.js#^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
