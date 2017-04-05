@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  var arrow = $('.up-arrow');
   $('.box').click(function (e) {
     $('section').addClass('filter-backdrop');
   });
@@ -11,6 +11,20 @@ $(document).ready(function () {
   $('.button-box ul li').click(function () {
     console.log(this);
   });
+
+
+  var links = document.querySelectorAll('a[href]');
+  var cbk = function(e) {
+  if(e.currentTarget.href === window.location.href) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  };
+
+  for(var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', cbk);
+  }
+
 
   /* /////////////////////BARBA JS//////////////// */
   Barba.Pjax.start();
@@ -67,23 +81,74 @@ $(document).ready(function () {
     return FadeTransition;
   };
 
-  /* -----------   Instagram Feed ----------------- */
-  var userId = '3860040881';
-  var appToken = '3860040881.a12c878.26faa4846d984563a59c9b23aa846447';
-  $.getJSON({
-    url: 'https://api.instagram.com/v1/users/' + userId + '/media/recent/?access_token=' + appToken,
-    type: 'GET',
-    crossDomain: true,
-    dataType: 'jsonp',
-    success: function (e) {
-      var images = e.data[0].images.standard_resolution.url;
-      var post = e.data;
-      post.forEach(function (el, index, array) {
-        var imgURL = el.images.standard_resolution.url;
-        $('section').append('<img src=' + imgURL + '>')
-        console.log(imgURL);
-      });
 
+  Barba.Dispatcher.on('linkClicked', function(currentStatus, oldStatus, container) {
+    console.log(currentStatus);
+  });
+
+  /* -----------   Instagram Feed ----------------- */
+  var userId = '4991088147';
+  var appToken = '3860040881.ab8fe28.2ddb545fa3f74b73b9099dd118d17435';
+
+  $.ajax({
+      url: 'https://api.instagram.com/v1/users/' + userId + '/media/recent/?access_token=' + appToken,
+      type: 'GET',
+      crossDomain: true,
+      dataType: 'jsonp',
+      success: function (e) {
+        var images = e.data[0].images.standard_resolution.url;
+        var post = e.data;
+        console.log(e);
+        post.forEach(function (el, index, array) {
+          var imgURL = el.images.standard_resolution.url;
+          var instaURL = el.link;
+          var likes = el.likes.count; 
+          $('#instagram-feed .container')
+            .append('<div class="col-sm-3 insta-img no-gutters"><a href="' 
+              + instaURL 
+              + '" target="_blank"><img src=' 
+              + imgURL 
+              + '><span>' + likes + ' <i class="fa fa-heart" aria-hidden="true"></i></span></a>'
+              + '</div>');
+        });
+      }
+  });
+
+  /**
+   * Smooth scrolling jquery support
+   */
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
     }
   });
+
+  /**
+   * Scroll position
+   */
+
+  $(window).scroll(function (event) {
+    var scroll = $(window).scrollTop();
+
+    if (scroll == 0) {
+      arrow.css({
+        opacity: "0",
+        transform: "translateY(-100%)"
+      })
+    }
+    if (scroll > 100) {
+      arrow.css({
+        opacity: "1",
+        transform: "translateY(0)"
+      })
+    }
+  });
+
 });

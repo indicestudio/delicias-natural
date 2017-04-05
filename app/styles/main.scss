@@ -1,6 +1,6 @@
 // bower:scss
 // endbower
-@import '_bootstrap';
+@import 'bootstrap';
 @import '_values';
 
 h1, h2, h3, h4, h5, h6, p {
@@ -20,11 +20,18 @@ ul {
 }
 
 a {
-  text-decoration: inherit;
-  &:hover, &:visited, &:active {
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover, &:visited, &:active, &:link {
     text-decoration: none;
+    color: inherit;
   }
   
+}
+
+#productos .button-box ul #active {
+  border-bottom: 2px solid $color-accent;
 }
 
 
@@ -39,6 +46,24 @@ a {
   height: 100vh;
   border: 20px solid $color-white;
   overflow: hidden;
+}
+
+.up-arrow {
+  position: fixed;
+  right: 4%;
+  bottom: 4%;
+  padding: 15px;
+  border: 3px solid #fff;;
+  border-radius: 50%;
+  z-index: 0;
+  text-shadow: 1px 1px 3px #000;
+  opacity: .8;
+  transition: all 0.4s ease;
+  i{
+    margin-top: -5px;
+    font-size: 1.5em;
+    color: #fff;
+  }
 }
 
 /*#main-menu {
@@ -249,15 +274,19 @@ a {
   width: 80%;
 }
 
+#comprar {
+  z-index: 50;
+}
+
 #productos{
   background-color: $color-pale;
   .box {
     float: left;
     margin: 25px;
-    transition: all 0.4s ease;
+    transition: all 0.1s ease;
     &:hover{
       cursor: pointer;
-      transform: translate(0, -5%);
+      transform: scale(1.1);
     }
   }
   .button-box {
@@ -300,9 +329,33 @@ a {
   }
 }
 .callout {
+  text-align: center;
+  .callout-btn {
+    cursor: pointer;
+    display: inline-block;
+    &:hover {
+      svg:first-child {
+        transform: translateY(-10%);
+      }
+      svg:last-child {
+        transform: translateY(10%);
+      }
+    }
+  }
   h1 {
-    text-align: center;
     color: $color-accent;
+    line-height: 1.4;
+  }
+  svg {
+    fill: $color-accent;
+    transition: transform 0.2s ease-in-out;
+    &:last-child {
+      margin-top: 3px;
+    }
+  }
+  p {
+    margin-top: 25px;
+    font-size: 1.5em;
   }
 }
 
@@ -313,4 +366,114 @@ a {
 
 }
 
-@import 'mobile';
+#instagram-feed {
+  background-color: $color-pale;
+  padding: 150px 0;
+  .insta-img {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    span {
+      display: inline-block;
+      position: absolute;
+      transform: translate(150%, 150%);
+      transition: transform 0.3s ease-in-out;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    &:before {
+      content: "";
+      //transform: translateY(-500%);
+      //transition: transform 0.4s ease;
+    }
+    &:hover {
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.5;
+        transform: translateY(0);
+      }
+      span {
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 3em;
+        z-index: 100;
+      }
+    }
+  }
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 2px;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+#callout-img {
+  img {
+    width: 100%;
+  }
+}
+
+.modal-header {
+  padding: 5px;
+  text-align: right;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  line-height: 1;
+  z-index: 100;
+  border: 0;
+  button {
+    background: transparent;
+    border: none;
+    font-size: 4em;
+    color: $color-accent;
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+#footer {
+  background: url('../images/footer.jpg');
+  padding: 80px 0;
+  background-size: cover;
+  text-align: center;
+  h1 {
+    font-size: 1.8em;
+    color: #fff;
+  }
+  .social-icons {
+    margin-top: 80px;
+    i {
+      font-size: 4em;
+      color: #fff;
+    }
+    p {
+      margin-top: 25px;
+      color: #fff;
+      font-size: 1.2em;
+    }
+
+  }
+}
+
+@import '_mobile';
