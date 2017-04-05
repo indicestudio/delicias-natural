@@ -12,6 +12,7 @@
       #header {
           background-color: $color-pale;
           border: 0;
+          height: 60vh;
       }
       .big-title {
           font-size: 3em;
@@ -23,6 +24,7 @@
       #divider {
           width: 50%;
           fill: #000;
+          margin-top: 0;
       }
       .products-line {
           font-size: 1em;
@@ -31,10 +33,13 @@
       #video-header {
           display: none;
       }
+
       #arrow {
-          display: none;
+        display: none;
       }
+      
       #nosotros {
+        padding: 50px 20px;
           h1 {
               font-size: 2em;
               text-align: center;
@@ -42,6 +47,75 @@
           p {
               text-align: center;
           }
+          .col-sm-5 {
+            margin-top: 25px;
+            .img-circle {
+              width: 125px;
+              height: 125px;
+            }
+            
+          }
+      }
+
+      #productos {
+        text-align: center;
+        max-width: 100%;
+        padding: 0;
+        .box {
+          float: none;
+          margin: 25 0px;
+          img {
+            width: 100%;
+          }
+          &:first-child {
+            margin-top: 0;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        .button-box {
+          width: 220px;
+          height: 220px;
+          float: none;
+          padding: 25px;
+          li {
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      #comprar {
+        padding: 50px 0;
+      }
+
+      #instagram-feed {
+        padding: 0;
+        .insta-img:first-child {
+          padding-top: 0;
+        }
+        .insta-img {
+          padding: 7px 0;
+        }
+        .insta-img:last-child {
+          padding-bottom: 0;
+        }
+      }
+
+      #footer {
+        padding: 40px;
+        h1 {
+          font-size: 2em;
+        }
+        .social-icons {
+          margin-top: 25px;
+        }
+        .col-xs-12:first-child {
+          margin-top: 0;
+        }
+        .col-xs-12 {
+          margin-top: 15px;
+        }
       }
 
 }

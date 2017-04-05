@@ -1,6 +1,6 @@
 // bower:scss
 // endbower
-@import 'bootstrap';
+@import '_bootstrap';
 @import '_values';
 
 h1, h2, h3, h4, h5, h6, p {
@@ -135,7 +135,7 @@ a {
   position: relative;
   font-weight: 700;
   font-size: 6em;
-  color: $color-pale;
+  color: $color-accent;
   margin: 0;
   opacity: 0;
   line-height: 1em;
@@ -249,7 +249,7 @@ a {
   .parallax-window {
     width: 250px;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 0;
   }
 }
 
@@ -303,6 +303,7 @@ a {
     background-color: $color-white;
     box-sizing: border-box;
     text-align: center;
+    border-radius: 50%;
     ul {
       display: flex;
       flex-direction: column;

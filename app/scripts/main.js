@@ -139,14 +139,14 @@ $(document).ready(function () {
 
     if (scroll == 0) {
       arrow.css({
-        opacity: "0",
-        transform: "translateY(-100%)"
+        opacity: '0',
+        transform: 'translateY(-100%)'
       })
     }
     if (scroll > 100) {
       arrow.css({
-        opacity: "1",
-        transform: "translateY(0)"
+        opacity: '1',
+        transform: 'translateY(0)'
       })
     }
   });
