@@ -1,30 +1,4 @@
 $(document).ready(function () {
-  var arrow = $('.up-arrow');
-  $('.box').click(function (e) {
-    $('section').addClass('filter-backdrop');
-  });
-
-  $('.modal.fade').click(function () {
-    $('section').removeClass('filter-backdrop');
-  });
-
-  $('.button-box ul li').click(function () {
-    console.log(this);
-  });
-
-
-  var links = document.querySelectorAll('a[href]');
-  var cbk = function(e) {
-  if(e.currentTarget.href === window.location.href) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  };
-
-  for(var i = 0; i < links.length; i++) {
-    links[i].addEventListener('click', cbk);
-  }
-
 
   /* /////////////////////BARBA JS//////////////// */
   Barba.Pjax.start();
@@ -83,8 +57,41 @@ $(document).ready(function () {
 
 
   Barba.Dispatcher.on('linkClicked', function(currentStatus, oldStatus, container) {
-    console.log(currentStatus);
+    //console.log(container);
   });
+
+  function loadTime() {
+    $('.box:lt(3), .button-box').css("margin-top", 0);
+    $('.box:last-child()').css("margin-bottom", 0);
+  }
+
+  var arrow = $('.up-arrow');
+  $('.box').click(function (e) {
+    $('section').addClass('filter-backdrop');
+  });
+
+  $('.modal.fade').click(function () {
+    $('section').removeClass('filter-backdrop');
+  });
+
+  $('.button-box ul li').click(function () {
+    //console.log(this);
+  });
+
+
+  var links = document.querySelectorAll('a[href]');
+  var cbk = function(e) {
+  if(e.currentTarget.href === window.location.href) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  };
+
+  for(var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', cbk);
+  }
+
+
 
   /* -----------   Instagram Feed ----------------- */
   var userId = '4991088147';
@@ -98,7 +105,7 @@ $(document).ready(function () {
       success: function (e) {
         var images = e.data[0].images.standard_resolution.url;
         var post = e.data;
-        console.log(e);
+        //console.log(e);
         post.forEach(function (el, index, array) {
           var imgURL = el.images.standard_resolution.url;
           var instaURL = el.link;
@@ -150,5 +157,7 @@ $(document).ready(function () {
       })
     }
   });
+
+
 
 });

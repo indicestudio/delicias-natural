@@ -12,7 +12,7 @@ body {
 }
 
 section {
-  padding: 100px;
+  padding: 75px;
 }
 
 ul {
@@ -30,8 +30,20 @@ a {
   
 }
 
+#nosotros .text-left {
+  text-align: left;
+}
+
+#nosotros {
+  margin-top: -20px;
+}
+
 #productos .button-box ul #active {
-  border-bottom: 2px solid $color-accent;
+  border: 2px solid $color-accent;
+  background-color: $color-accent;
+  border-radius: 5px;
+  color: white;
+  padding: 2px 4px;
 }
 
 
@@ -55,7 +67,7 @@ a {
   padding: 15px;
   border: 3px solid #fff;;
   border-radius: 50%;
-  z-index: 0;
+  z-index: 50;
   text-shadow: 1px 1px 3px #000;
   opacity: .8;
   transition: all 0.4s ease;
@@ -99,6 +111,7 @@ a {
   animation: increase 3s ease-in-out;
   min-width: 100%;
   min-height: 100%;
+  opacity: 1;
 }
 
 @media screen 
@@ -121,11 +134,11 @@ a {
 
 @keyframes increase {
   0% {
-    opacity: 0;
-    transform: scale(0);
+    opacity: .5;
+    //transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -136,6 +149,7 @@ a {
   font-weight: 700;
   font-size: 6em;
   color: $color-accent;
+  font-family: $font-accent;
   margin: 0;
   opacity: 0;
   line-height: 1em;
@@ -228,19 +242,38 @@ a {
   }
 }
 
+.modal-txt {
+  padding: 25px;
+  text-align: center;
+  .title {
+    font-family: $font-accent;
+    font-size: 1.5em;
+    color: $color-accent;
+  }
+  .desc {
+    font-size: 1.2em;
+    font-style: italic;
+  }
+  .price {
+    font-size: 1.2em;
+  }
+
+}
+
 #nosotros{
   display: block;
   z-index: -50;
   background: transparent;
   h1 {
-    font-size: 6em;
+    font-size: 4em;
     font-weight: 700;
     line-height: 0.8em;
     color: $color-accent;
+    font-family: $font-accent;
     text-align: right;
     
   }
-  p{
+  p {
     margin-top: 2em;
     letter-spacing: 2px;
     line-height: 2em;
@@ -253,9 +286,39 @@ a {
   }
 }
 
+.sanitize {
+  padding: 75px 0;
+  text-align: center;
+  background: url('../images/fondo-tabla.jpg');
+  background-size: auto 100%;
+  //background-origin: content-box;
+  background-attachment:fixed;
+
+  h1 {
+    font-family: $font-accent;
+    font-size: 4em;
+    color: $color-accent;
+    line-height: 1;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    //color: #c0dacf;
+  }
+
+  p {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 2em;
+    letter-spacing: 2px;
+    line-height: 2em;
+    text-align: center;
+    font-size: 1.2em;
+    //color: #c0dacf;
+  }
+}
+
 .parallax-window {
 	background: transparent;
-	height: 250px;
+	height: 200px;
   width: 375px;
 }
 
@@ -278,14 +341,27 @@ a {
   z-index: 50;
 }
 
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
 #productos{
   background-color: $color-pale;
   .box {
     float: left;
     margin: 25px;
     transition: all 0.1s ease;
+    border-radius: 50%;
+    img {
+      border-radius: 50%;
+    }
     &:hover{
       cursor: pointer;
+      box-sizing: border-box;
       transform: scale(1.1);
     }
   }
@@ -314,8 +390,8 @@ a {
     li {
       list-style: none;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      padding-bottom: 5px;
+      margin-bottom: 2px;
+      padding-bottom: 1px;
       display: inline-block;
       border-bottom: 2px solid transparent;
       transition: all 0.4s ease;
@@ -323,7 +399,8 @@ a {
         margin-bottom: 0;
       }
       &:hover {
-        border-bottom: 2px solid $color-accent;
+        //border-bottom: 2px solid $color-accent;
+        color: $color-accent;
         cursor: pointer;
       }
     }
@@ -345,6 +422,7 @@ a {
   }
   h1 {
     color: $color-accent;
+    font-family: $font-accent;
     line-height: 1.4;
   }
   svg {
@@ -369,7 +447,7 @@ a {
 
 #instagram-feed {
   background-color: $color-pale;
-  padding: 150px 0;
+  padding: 75px 0;
   .insta-img {
     display: block;
     position: relative;
@@ -455,12 +533,14 @@ a {
 
 #footer {
   background: url('../images/footer.jpg');
-  padding: 80px 0;
+  padding: 75px 0;
   background-size: cover;
   text-align: center;
   h1 {
+    font-family: $font-accent;
     font-size: 1.8em;
     color: #fff;
+    letter-spacing: 1px;
   }
   .social-icons {
     margin-top: 80px;
@@ -477,4 +557,4 @@ a {
   }
 }
 
-@import '_mobile';
+@import 'mobile';
