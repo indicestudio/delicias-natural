@@ -61,8 +61,8 @@ $(document).ready(function () {
   });
 
   function loadTime() {
-    $('.box:lt(3), .button-box').css("margin-top", 0);
-    $('.box:last-child()').css("margin-bottom", 0);
+    $('.box:lt(3), .button-box').css('margin-top', 0);
+    $('.box:last-child()').css('margin-bottom', 0);
   }
 
   var arrow = $('.up-arrow');
